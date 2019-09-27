@@ -4,6 +4,7 @@ view: actors {
   dimension: aid {
     type: string
     sql: ${TABLE}.aid ;;
+    primary_key: yes
   }
 
   dimension: gender {

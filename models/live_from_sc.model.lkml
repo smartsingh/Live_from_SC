@@ -10,7 +10,8 @@ datagroup: live_from_sc_default_datagroup {
 
 persist_with: live_from_sc_default_datagroup
 
-explore: actors {}
+explore: actors {
+}
 
 explore: appearances {
 
@@ -19,30 +20,47 @@ explore: appearances {
     relationship: many_to_one
     sql_on: ${appearances.epid} = ${episodes.epid} ;;
   }
+
   join: actors {
     type: inner
     relationship: many_to_one
     sql_on: ${appearances.aid} = ${actors.aid} ;;
   }
+
   join: seasons {
     type: inner
     relationship: many_to_one
     sql_on: ${appearances.sid} = ${seasons.sid} ;;
   }
+
   join: impressions {
     type: inner
     relationship: many_to_one
     sql_on: ${appearances.impid} = ${impressions.impid} ;;
   }
+
   join: characters {
     type: inner
     relationship: many_to_one
     sql_on: ${appearances.charid} = ${characters.charid} ;;
   }
+
   join: episode_ratings {
     type: inner
     relationship: one_to_one
     sql_on: ${episodes.epno} = ${episode_ratings.epno} AND ${episodes.sid} = ${episode_ratings.sid} ;;
+  }
+
+  join: hosts {
+    type: inner
+    relationship: one_to_many
+    sql_on: ${actors.aid} = ${hosts.aid} ;;
+  }
+
+  join: titles {
+    type: inner
+    sql: ${titles.tid} = ${appearances.tid} ;;
+    relationship: many_to_one
   }
 }
 

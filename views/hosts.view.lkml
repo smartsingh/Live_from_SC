@@ -1,6 +1,13 @@
 view: hosts {
   sql_table_name: snl_db.hosts ;;
 
+  dimension: pk {
+    hidden: yes
+    type: string
+    sql: CONCAT(${aid},CAST(${epid} AS STRING)) ;;
+    primary_key: yes
+  }
+
   dimension: aid {
     type: string
     sql: ${TABLE}.aid ;;

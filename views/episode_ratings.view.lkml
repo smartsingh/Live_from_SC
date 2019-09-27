@@ -33,7 +33,8 @@ view: episode_ratings {
 
   dimension: epno {
     type: number
-    sql: ${TABLE}.epno ;;
+    #episode numbers from this view are counted from base 0 for some reason instead of base 1
+    sql: ${TABLE}.epno + 1;;
   }
 
   dimension: sid {
