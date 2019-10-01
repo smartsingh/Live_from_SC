@@ -1,6 +1,13 @@
 view: episode_ratings {
   sql_table_name: snl_db.episode_ratings ;;
 
+  dimension: pk {
+    hidden: yes
+    type: string
+    sql: CONCAT(CAST(${epno} AS STRING),CAST(${sid} AS STRING)) ;;
+    primary_key: yes
+  }
+
   dimension: average_all {
     type: number
     sql: ${TABLE}.Average_All ;;

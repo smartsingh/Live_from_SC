@@ -10,6 +10,7 @@ view: sketches {
     type: number
     value_format_name: id
     sql: ${TABLE}.skid ;;
+    primary_key: yes
   }
 
   measure: count {

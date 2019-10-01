@@ -27,6 +27,12 @@ explore: appearances {
     sql_on: ${appearances.aid} = ${actors.aid} ;;
   }
 
+  join: casts {
+    type: inner
+    relationship: many_to_one
+    sql_on: ${casts.aid} = ${appearances.aid} ;;
+  }
+
   join: seasons {
     type: inner
     relationship: many_to_one
@@ -59,13 +65,31 @@ explore: appearances {
 
   join: titles {
     type: inner
-    sql: ${titles.tid} = ${appearances.tid} ;;
+    sql_on: ${appearances.tid} = ${titles.tid} ;;
+    relationship: many_to_one
+  }
+
+  join: sketches {
+    type: inner
+    sql_on: ${titles.skid} = ${sketches.skid} ;;
     relationship: many_to_one
   }
 }
 
 explore: casts {
   hidden: yes
+
+  join: appearances {
+    type: inner
+    relationship: many_to_many
+    sql_on: ${casts.aid} = ${appearances.aid} ;;
+  }
+
+  join: episodes {
+    type: inner
+    relationship: one_to_many
+    sql_on: ${episodes.epid} = ${appearances.epid} ;;
+  }
 }
 
 explore: characters {  hidden: yes}

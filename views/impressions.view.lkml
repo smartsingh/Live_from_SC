@@ -10,6 +10,7 @@ view: impressions {
     type: number
     value_format_name: id
     sql: ${TABLE}.impid ;;
+    primary_key: yes
   }
 
   dimension: name {

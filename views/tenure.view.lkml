@@ -4,6 +4,7 @@ view: tenure {
   dimension: aid {
     type: string
     sql: ${TABLE}.aid ;;
+    primary_key: yes
   }
 
   dimension: eps_present {

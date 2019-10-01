@@ -1,6 +1,13 @@
 view: titles {
   sql_table_name: snl_db.titles ;;
 
+  dimension: pk {
+    hidden: yes
+    type: string
+    sql: CONCAT(CAST(${epid} AS STRING),CAST(${tid} AS STRING)) ;;
+    primary_key: yes
+  }
+
   dimension: category {
     type: string
     sql: ${TABLE}.category ;;

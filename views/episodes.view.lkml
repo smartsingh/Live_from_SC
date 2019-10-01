@@ -2,15 +2,16 @@ view: episodes {
   sql_table_name: snl_db.episodes ;;
 
   dimension: aired {
-    type: string
-    sql: ${TABLE}.aired ;;
+    type: date
+    sql: PARSE_DATE('%Y%m%d', CAST(${epid} AS STRING)) ;;
   }
 
   dimension: epid {
     type: number
-    value_format_name: id
     sql: ${TABLE}.epid ;;
+    primary_key: yes
   }
+
 
   dimension: epno {
     type: number
@@ -19,12 +20,21 @@ view: episodes {
 
   dimension: sid {
     type: number
-    value_format_name: id
     sql: ${TABLE}.sid ;;
   }
 
   measure: count {
     type: count
     drill_fields: []
+  }
+
+  measure: First_Episode{
+    type: min
+    sql: ${aired} ;;
+  }
+
+  measure: Last_Episode {
+    type: max
+    sql: ${aired} ;;
   }
 }

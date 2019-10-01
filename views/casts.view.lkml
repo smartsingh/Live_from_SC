@@ -18,17 +18,15 @@ view: casts {
     sql: ${TABLE}.featured ;;
   }
 
-  dimension: first_epid {
-    type: number
-    value_format_name: id
-    sql: ${TABLE}.first_epid ;;
-  }
-
-  dimension: last_epid {
-    type: number
-    value_format_name: id
-    sql: ${TABLE}.last_epid ;;
-  }
+#   dimension: first_epid {
+#     type: date
+#     sql: MIN(${episodes.aired}) ;;
+#   }
+#
+#   dimension: last_epid {
+#     type: date
+#     sql: MAX(${episodes.aired}) ;;
+#   }
 
   dimension: n_episodes {
     type: number
@@ -42,7 +40,6 @@ view: casts {
 
   dimension: sid {
     type: number
-    value_format_name: id
     sql: ${TABLE}.sid ;;
   }
 
