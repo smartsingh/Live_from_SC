@@ -4,7 +4,7 @@ view: appearances {
   dimension: pk {
     #hidden: yes
     type: string
-    sql: CONCAT(${aid},CAST(${epid} AS STRING)) ;;
+    sql: CONCAT(${aid},CAST(${charid} AS STRING)) ;;
     primary_key: yes
   }
 
