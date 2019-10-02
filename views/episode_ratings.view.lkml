@@ -2,38 +2,38 @@ view: episode_ratings {
   sql_table_name: snl_db.episode_ratings ;;
 
   dimension: pk {
-    hidden: yes
+    #hidden: yes
     type: string
     sql: CONCAT(CAST(${epno} AS STRING),CAST(${sid} AS STRING)) ;;
     primary_key: yes
   }
 
-  dimension: average_all {
+  dimension: score {
     type: number
     sql: ${TABLE}.Average_All ;;
   }
 
-  dimension: average_females {
+  dimension: female_score {
     type: number
     sql: ${TABLE}.Average_Females ;;
   }
 
-  dimension: average_males {
+  dimension: male_score {
     type: number
     sql: ${TABLE}.Average_Males ;;
   }
 
-  dimension: counts_all {
+  dimension: votes {
     type: number
     sql: ${TABLE}.Counts_All ;;
   }
 
-  dimension: counts_females {
+  dimension: female_votes {
     type: number
     sql: ${TABLE}.Counts_Females ;;
   }
 
-  dimension: counts_males {
+  dimension: male_votes {
     type: number
     sql: ${TABLE}.Counts_Males ;;
   }
@@ -53,5 +53,20 @@ view: episode_ratings {
   measure: count {
     type: count
     drill_fields: []
+  }
+
+  measure: average_score {
+    type: average
+    sql: ${score} ;;
+  }
+
+  measure: female_average {
+    type: average
+    sql: ${female_score} ;;
+  }
+
+  measure: male_average {
+    type: average
+    sql: ${male_score} ;;
   }
 }

@@ -2,7 +2,7 @@ view: casts {
   sql_table_name: snl_db.casts ;;
 
   dimension: pk {
-    hidden: yes
+    #hidden: yes
     type: string
     sql: CONCAT(${aid},CAST(${sid} AS STRING)) ;;
     primary_key: yes

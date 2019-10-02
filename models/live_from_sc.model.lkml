@@ -74,6 +74,12 @@ explore: appearances {
     sql_on: ${titles.skid} = ${sketches.skid} ;;
     relationship: many_to_one
   }
+
+  join: derived_casts {
+    type: inner
+    sql_on: ${appearances.aid} = ${derived_casts.casts_aid} ;;
+    relationship: many_to_one
+  }
 }
 
 explore: casts {
@@ -97,6 +103,8 @@ explore: characters {  hidden: yes}
 explore: episode_ratings {  hidden: yes}
 
 explore: episodes {  hidden: yes}
+
+explore: derived_casts { hidden: yes}
 
 explore: hosts {
   join: actors {

@@ -2,7 +2,7 @@ view: appearances {
   sql_table_name: snl_db.appearances ;;
 
   dimension: pk {
-    hidden: yes
+    #hidden: yes
     type: string
     sql: CONCAT(${aid},CAST(${epid} AS STRING)) ;;
     primary_key: yes

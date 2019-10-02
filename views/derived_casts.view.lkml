@@ -1,4 +1,4 @@
-view: sql_runner_query {
+view: derived_casts {
   derived_table: {
     sql: SELECT
         casts.aid  AS casts_aid,
@@ -23,6 +23,7 @@ view: sql_runner_query {
     label: "aid"
     type: string
     sql: ${TABLE}.casts_aid ;;
+    primary_key: yes
   }
 
   dimension: episodes_first_episode_1 {
