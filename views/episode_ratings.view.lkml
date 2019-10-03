@@ -58,6 +58,7 @@ view: episode_ratings {
   measure: average_score {
     type: average
     sql: ${score} ;;
+    value_format: "0.00"
   }
 
   measure: female_average {

@@ -104,7 +104,21 @@ explore: episode_ratings {  hidden: yes}
 
 explore: episodes {  hidden: yes}
 
-explore: derived_casts { hidden: yes}
+explore: derived_casts {
+
+  join: appearances {
+    type: inner
+    sql_on: ${derived_casts.casts_aid} = ${appearances.aid} ;;
+    relationship: one_to_many
+  }
+
+  join: episodes {
+    type: inner
+    sql_on: ${episodes.epid} = ${appearances.epid} ;;
+    relationship: one_to_many
+  }
+
+  }
 
 explore: hosts {
   join: actors {
