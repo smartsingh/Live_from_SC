@@ -4,7 +4,7 @@ view: episode_ratings {
   dimension: pk {
     #hidden: yes
     type: string
-    sql: CONCAT(CAST(${epno} AS STRING),CAST(${sid} AS STRING)) ;;
+    sql: CONCAT(CAST(${epno} AS STRING),"-",CAST(${sid} AS STRING)) ;;
     primary_key: yes
   }
 
