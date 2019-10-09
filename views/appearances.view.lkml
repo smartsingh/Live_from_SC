@@ -58,6 +58,15 @@ view: appearances {
     sql: ${TABLE}.voice ;;
   }
 
+  filter: actor {
+    suggest_dimension: aid
+  }
+
+  measure: actor_appearances {
+    type: count_distinct
+    sql: CASE WHEN {% condition actor %} ${aid} {% endcondition %} THEN ${pk} END ;;
+  }
+
   measure: count {
     type: count
     drill_fields: []

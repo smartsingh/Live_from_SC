@@ -64,10 +64,12 @@ view: episode_ratings {
   measure: female_average {
     type: average
     sql: ${female_score} ;;
+    value_format: "0.00"
   }
 
   measure: male_average {
     type: average
     sql: ${male_score} ;;
+    value_format: "0.00"
   }
 }

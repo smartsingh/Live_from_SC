@@ -1,8 +1,15 @@
 view: episodes {
   sql_table_name: snl_db.episodes ;;
 
-  dimension: aired {
-    type: date
+  dimension_group: aired {
+    type: time
+    datatype: date
+    timeframes: [
+      date,
+      month,
+      quarter,
+      year
+    ]
     sql: PARSE_DATE('%Y%m%d', CAST(${epid} AS STRING)) ;;
   }
 
@@ -30,11 +37,17 @@ view: episodes {
 
   measure: First_Episode{
     type: min
-    sql: ${aired} ;;
+    sql: ${aired_date} ;;
   }
 
   measure: Last_Episode {
     type: max
-    sql: ${aired} ;;
+    sql: ${aired_date} ;;
   }
+
+  measure: actor_episodes {
+    type: count_distinct
+    sql: CASE WHEN {% condition appearances.actor %} ${appearances.aid} {% endcondition %} THEN ${epid} END ;;
+  }
+
 }

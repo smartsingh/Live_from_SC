@@ -102,7 +102,10 @@ explore: characters {  hidden: yes}
 
 explore: episode_ratings {  hidden: yes}
 
-explore: episodes {  hidden: yes}
+explore: episodes {
+  hidden: yes
+  fields: [ALL_FIELDS*, -episodes.actor_episodes]
+  }
 
 explore: derived_casts {
 
@@ -130,7 +133,16 @@ explore: hosts {
 
 explore: impressions {  hidden: yes}
 
-explore: seasons {  hidden: yes}
+explore: seasons {
+  hidden: yes
+
+  join: appearances{
+    type: inner
+    sql_on: ${appearances.sid} = ${seasons.sid};;
+    relationship: many_to_one
+  }
+
+  }
 
 explore: sketches {  hidden: yes}
 

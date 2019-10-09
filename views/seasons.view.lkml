@@ -34,4 +34,10 @@ view: seasons {
     type: count
     drill_fields: []
   }
+
+  measure: actor_seasons {
+    type: count_distinct
+    sql: CASE WHEN {% condition appearances.actor %} ${appearances.aid} {% endcondition %} THEN ${sid} END ;;
+  }
+
 }
