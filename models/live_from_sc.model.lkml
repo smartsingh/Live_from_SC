@@ -171,6 +171,12 @@ explore: chemistry {
     sql_on: ${chemistry.epid} = ${appearances.epid} ;;
   }
 
+  join: derived_casts {
+    type: inner
+    relationship: one_to_many
+    sql_on: ${derived_casts.casts_aid} = ${chemistry.aid} ;;
+  }
+
 }
 
 explore: seasons {

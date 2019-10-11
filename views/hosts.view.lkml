@@ -22,7 +22,6 @@ view: hosts {
   dimension: occupation {
     type: string
     sql: CASE WHEN UPPER(${TABLE}.occupation) LIKE "%COMEDIAN%" OR UPPER(${TABLE}.occupation) LIKE "%COMIC%" THEN "Comedian"
-    # WHEN UPPER(${TABLE}.occupation) LIKE "%MUSICIAN%" THEN "Musician"
     WHEN UPPER(${TABLE}.occupation) LIKE "%FOOTBALL%" OR UPPER(${TABLE}.occupation) LIKE "%BASKETBALL%" OR
     UPPER(${TABLE}.occupation) LIKE "%HOCKEY%" OR UPPER(${TABLE}.occupation) LIKE "%BASEBALL%" OR
     UPPER(${TABLE}.occupation) LIKE "%OLYMPIC%" OR UPPER(${TABLE}.occupation) LIKE "%ATHLETE%"

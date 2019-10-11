@@ -29,12 +29,14 @@ view: derived_casts {
   dimension: episodes_first_episode_1 {
     label: "First Episode"
     type: date
+    datatype: date
     sql: ${TABLE}.episodes_first_episode_1 ;;
   }
 
   dimension: episodes_last_episode_1 {
     label: "Last Episode"
     type: date
+    datatype: date
     sql: ${TABLE}.episodes_last_episode_1 ;;
   }
 

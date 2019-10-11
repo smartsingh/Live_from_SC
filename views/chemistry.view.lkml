@@ -40,6 +40,7 @@ view: chemistry {
   dimension: pk {
     type: string
     sql: CONCAT(CAST(${tid} AS STRING),"-",${aid},"-",${host}) ;;
+    primary_key: yes
   }
 
   dimension: tid {
