@@ -60,7 +60,7 @@ explore: appearances {
   join: hosts {
     type: inner
     relationship: one_to_many
-    sql_on: ${actors.aid} = ${hosts.aid} ;;
+    sql_on: ${episodes.epid} = ${hosts.epid} ;;
   }
 
   join: titles {
@@ -96,6 +96,12 @@ explore: casts {
     relationship: one_to_many
     sql_on: ${episodes.epid} = ${appearances.epid} ;;
   }
+
+  join: derived_casts {
+    type: inner
+    sql_on: ${derived_casts.casts_aid} = ${casts.aid} ;;
+    relationship: one_to_many
+  }
 }
 
 explore: characters {  hidden: yes}
@@ -105,6 +111,18 @@ explore: episode_ratings {  hidden: yes}
 explore: episodes {
   hidden: yes
   fields: [ALL_FIELDS*, -episodes.actor_episodes]
+
+  join: appearances {
+    type: inner
+    sql_on: ${appearances.epid} = ${episodes.epid} ;;
+    relationship: many_to_one
+  }
+
+  join: derived_casts {
+    type: inner
+    sql_on: ${derived_casts.casts_aid} = ${appearances.aid} ;;
+    relationship: one_to_many
+  }
   }
 
 explore: derived_casts {
@@ -132,6 +150,28 @@ explore: hosts {
 }
 
 explore: impressions {  hidden: yes}
+
+explore: chemistry {
+
+  join: episodes {
+    type: inner
+    sql_on: ${episodes.epid} = ${chemistry.epid} ;;
+    relationship: one_to_many
+  }
+
+  join: episode_ratings {
+    type: inner
+    relationship: one_to_one
+    sql_on: ${episodes.epno} = ${episode_ratings.epno} AND ${episodes.sid} = ${episode_ratings.sid} ;;
+  }
+
+  join: appearances {
+    type: inner
+    relationship: many_to_many
+    sql_on: ${chemistry.epid} = ${appearances.epid} ;;
+  }
+
+}
 
 explore: seasons {
   hidden: yes

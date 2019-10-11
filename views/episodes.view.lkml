@@ -50,4 +50,9 @@ view: episodes {
     sql: CASE WHEN {% condition appearances.actor %} ${appearances.aid} {% endcondition %} THEN ${epid} END ;;
   }
 
+  measure: cast_episodes {
+    type: count_distinct
+    sql: ${epid} ;;
+    }
+
 }
