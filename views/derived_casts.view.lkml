@@ -3,12 +3,13 @@ view: derived_casts {
     sql: SELECT
         casts.aid  AS casts_aid,
         MIN(CAST(PARSE_DATE('%Y%m%d', CAST(episodes.epid AS STRING))  AS DATE)) AS episodes_first_episode_1,
-        MAX(CAST(PARSE_DATE('%Y%m%d', CAST(episodes.epid AS STRING))  AS DATE)) AS episodes_last_episode_1
+        MAX(CAST(PARSE_DATE('%Y%m%d', CAST(episodes.epid AS STRING))  AS DATE)) AS episodes_last_episode_1,
+        casts.update_anchor AS update_anchor
       FROM snl_db.casts  AS casts
       INNER JOIN snl_db.appearances  AS appearances ON casts.aid = appearances.aid AND casts.sid = appearances.sid
       INNER JOIN snl_db.episodes  AS episodes ON episodes.epid = appearances.epid
 
-      GROUP BY 1
+      GROUP BY 1,4
       ORDER BY 2 DESC
       LIMIT 500
        ;;
@@ -43,6 +44,11 @@ view: derived_casts {
     type: date
     datatype: date
     sql: ${TABLE}.episodes_last_episode_1 ;;
+  }
+
+  dimension: update_anchor {
+    type: yesno
+    sql: ${TABLE}.update_anchor ;;
   }
 
   filter: cohort_member {

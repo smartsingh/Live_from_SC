@@ -63,6 +63,13 @@ view: episode_ratings {
     drill_fields: [episodes.epid]
   }
 
+  measure: median_score {
+    type: median
+    sql: ${score} ;;
+    value_format: "0.00"
+    drill_fields: [episodes.epid]
+  }
+
   measure: female_average {
     type: average
     sql: ${female_score} ;;
