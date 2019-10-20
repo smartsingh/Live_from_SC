@@ -41,12 +41,13 @@ view: episode_ratings {
   dimension: epno {
     type: number
     #episode numbers from this view are counted from base 0 for some reason instead of base 1
+    value_format: "00"
     sql: ${TABLE}.epno + 1;;
   }
 
   dimension: sid {
     type: number
-    value_format_name: id
+    value_format: "00"
     sql: ${TABLE}.sid ;;
   }
 
@@ -59,6 +60,7 @@ view: episode_ratings {
     type: average
     sql: ${score} ;;
     value_format: "0.00"
+    drill_fields: [episodes.epid]
   }
 
   measure: female_average {

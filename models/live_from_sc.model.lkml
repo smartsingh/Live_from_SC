@@ -142,10 +142,35 @@ explore: derived_casts {
   }
 
 explore: hosts {
+
   join: actors {
     type: inner
     relationship: one_to_one
     sql_on: ${actors.aid} = ${hosts.aid} ;;
+  }
+
+  join: derived_casts {
+    type: left_outer
+    relationship: one_to_many
+    sql_on: ${derived_casts.casts_aid} = ${hosts.aid} ;;
+  }
+
+  join: episodes {
+    type: inner
+    sql_on: ${episodes.epid} = ${hosts.epid} ;;
+    relationship: one_to_many
+  }
+
+  join: appearances {
+    type: inner
+    sql_on: ${appearances.epid} = ${episodes.epid} ;;
+    relationship: many_to_one
+  }
+
+  join: episode_ratings {
+    type: inner
+    relationship: one_to_one
+    sql_on: ${episodes.epno} = ${episode_ratings.epno} AND ${episodes.sid} = ${episode_ratings.sid} ;;
   }
 }
 
@@ -194,6 +219,32 @@ explore: sketches {  hidden: yes}
 
 explore: tenure {  hidden: yes}
 
-explore: titles {  hidden: yes}
+explore: titles {
+
+  join: appearances {
+    type: inner
+    relationship: one_to_many
+    sql_on: ${appearances.tid} = ${titles.tid} ;;
+  }
+
+  join: episodes {
+    type: inner
+    relationship: one_to_many
+    sql_on: ${episodes.epid} = ${titles.epid} ;;
+  }
+
+  join: episode_ratings {
+    type: inner
+    relationship: one_to_one
+    sql_on: ${episodes.epno} = ${episode_ratings.epno} AND ${episodes.sid} = ${episode_ratings.sid} ;;
+  }
+
+  join: hosts {
+    type: inner
+    relationship: one_to_many
+    sql_on: ${episodes.epid} = ${hosts.epid} ;;
+  }
+
+  hidden: yes}
 
 explore: writers {}

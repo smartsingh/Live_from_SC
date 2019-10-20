@@ -5,6 +5,10 @@ view: actors {
     type: string
     sql: ${TABLE}.aid ;;
     primary_key: yes
+    link: {
+      label: "SNL Archives"
+      url: "http://www.snlarchives.net{{ url._value }}"
+    }
   }
 
   dimension: gender {

@@ -28,6 +28,7 @@ view: appearances {
     type: number
     value_format_name: id
     sql: ${TABLE}.epid ;;
+    suggestable: yes
   }
 
   dimension: impid {

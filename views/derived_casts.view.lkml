@@ -24,6 +24,11 @@ view: derived_casts {
     type: string
     sql: ${TABLE}.casts_aid ;;
     primary_key: yes
+    link: {
+      label: "IMDB page"
+      url: "https://www.imdb.com/find?q={{value}}"
+      icon_url: "https://ia.media-imdb.com/images/M/MV5BMTczNjM0NDY0Ml5BMl5BcG5nXkFtZTgwMTk1MzQ2OTE@._V1_.png"
+    }
   }
 
   dimension: episodes_first_episode_1 {

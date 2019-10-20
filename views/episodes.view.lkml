@@ -13,20 +13,29 @@ view: episodes {
     sql: PARSE_DATE('%Y%m%d', CAST(${epid} AS STRING)) ;;
   }
 
+  dimension: airdate {
+    type: string
+    label: "Air Date (String)"
+    sql: ${TABLE}.aired ;;
+  }
+
   dimension: epid {
     type: number
     sql: ${TABLE}.epid ;;
     primary_key: yes
+    drill_fields: [seasons.sid]
   }
 
 
   dimension: epno {
     type: number
+    value_format: "00"
     sql: ${TABLE}.epno ;;
   }
 
   dimension: sid {
     type: number
+    value_format: "00"
     sql: ${TABLE}.sid ;;
   }
 
@@ -55,4 +64,7 @@ view: episodes {
     sql: ${epid} ;;
     }
 
+  set: ALL_FIELDS {
+    fields: [ALL_FIELDS*]
+  }
 }

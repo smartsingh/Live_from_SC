@@ -45,6 +45,23 @@ view: hosts {
     ELSE ${TABLE}.occupation END;;
   }
 
+  dimension: raw_occupation {
+    type: string
+    sql: ${TABLE}.occupation ;;
+  }
+#
+#   dimension: host_cohort {
+#     type: string
+#     sql:
+#       CASE WHEN ${raw_occupation} LIKE CONCAT("%",(
+# SELECT MAX(CASE WHEN ${aid} = {% parameter derived_casts.cohort_member %} THEN occupation END)
+# FROM snl_db.hosts
+# LEFT JOIN UNNEST(SPLIT(REPLACE(REPLACE(${raw_occupation}, ",",""), "and", ""), " ")) AS occupation
+# WHERE ${raw_occupation} NOT IN ("-","")
+# ),"%")
+# THEN ${raw_occupation} END;;
+#   }
+
   measure: count {
     type: count
     drill_fields: []
