@@ -224,26 +224,26 @@ explore: musical_guests {
   join: hosts {
     type: inner
     relationship: one_to_one
-    sql_on: ${hosts.epid} = ${musical_guests.epid} AND ${hosts.aid} = ${musical_guests.aid} ;;
+    sql_on: ${hosts.epid} = ${musical_guests.epid};;
   }
 
-  join: appearances {
-    type: inner
-    relationship: one_to_many
-    sql_on: ${appearances.epid} = ${musical_guests.epid} ;;
-  }
-
-  join: episodes {
-    type: inner
-    relationship: one_to_many
-    sql_on: ${episodes.epid} = ${musical_guests.epid} ;;
-  }
-
-  join: episode_ratings {
-    type: inner
-    relationship: one_to_one
-    sql_on: ${episodes.epno} = ${episode_ratings.epno} AND ${episodes.sid} = ${episode_ratings.sid} ;;
-  }
+#   join: appearances {
+#     type: inner
+#     relationship: one_to_many
+#     sql_on: ${appearances.epid} = ${musical_guests.epid} ;;
+#   }
+#
+#   join: episodes {
+#     type: inner
+#     relationship: one_to_many
+#     sql_on: ${episodes.epid} = ${musical_guests.epid} ;;
+#   }
+#
+#   join: episode_ratings {
+#     type: inner
+#     relationship: one_to_one
+#     sql_on: ${episodes.epno} = ${episode_ratings.epno} AND ${episodes.sid} = ${episode_ratings.sid} ;;
+#   }
 
 }
 

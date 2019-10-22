@@ -11,6 +11,11 @@ view: hosts {
   dimension: aid {
     type: string
     sql: ${TABLE}.aid ;;
+    link: {
+      label: "IMDB page"
+      url: "https://www.imdb.com/find?q={{value}}"
+      icon_url: "https://ia.media-imdb.com/images/M/MV5BMTczNjM0NDY0Ml5BMl5BcG5nXkFtZTgwMTk1MzQ2OTE@._V1_.png"
+    }
   }
 
   dimension: epid {
@@ -64,6 +69,6 @@ view: hosts {
 
   measure: count {
     type: count
-    drill_fields: []
+    drill_fields: [episodes.airdate, aid, episode_ratings.score, episode_ratings.female_score, episode_ratings.male_score]
   }
 }

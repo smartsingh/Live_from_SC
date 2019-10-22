@@ -26,6 +26,11 @@ view: derived_casts {
     sql: ${TABLE}.casts_aid ;;
     primary_key: yes
     link: {
+      label: "Cast Dashboard"
+      url: "/dashboards/440?Cast%20Member={{ value }}"
+      icon_url: "https://looker.com/favicon.ico"
+    }
+    link: {
       label: "IMDB page"
       url: "https://www.imdb.com/find?q={{value}}"
       icon_url: "https://ia.media-imdb.com/images/M/MV5BMTczNjM0NDY0Ml5BMl5BcG5nXkFtZTgwMTk1MzQ2OTE@._V1_.png"

@@ -8,6 +8,7 @@ view: episodes {
       date,
       month,
       quarter,
+      month_num,
       year
     ]
     sql: PARSE_DATE('%Y%m%d', CAST(${epid} AS STRING)) ;;
@@ -57,7 +58,8 @@ view: episodes {
   measure: actor_episodes {
     type: count_distinct
     sql: CASE WHEN {% condition appearances.actor %} ${appearances.aid} {% endcondition %} THEN ${epid} END ;;
-  }
+    drill_fields: [aired_date, epid, hosts.aid, episode_ratings.score, episode_ratings.female_score, episode_ratings.male_score]
+    }
 
   measure: cast_episodes {
     type: count_distinct

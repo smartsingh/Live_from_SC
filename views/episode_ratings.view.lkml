@@ -60,7 +60,37 @@ view: episode_ratings {
     type: average
     sql: ${score} ;;
     value_format: "0.00"
+    drill_fields: [episodes.airdate, hosts.aid, episode_ratings.score, episode_ratings.female_score, episode_ratings.male_score]
+  }
+
+  measure: average_season {
+    label: "Average with Season Drills"
+    type: average
+    sql: ${score} ;;
+    value_format: "0.00"
+    drill_fields: [episodes.airdate, hosts.aid, episode_ratings.score, episode_ratings.female_score, episode_ratings.male_score]
+    link: {
+      label: "Season Dashboard"
+      url: "/dashboards/454?Season={{ episode_ratings.sid._value }}"
+      icon_url: "https://looker.com/favicon.ico"
+    }
+  }
+
+  measure: average_linked {
+    type: average
+    sql: ${score} ;;
+    value_format: "0.00"
     drill_fields: [episodes.epid]
+    link: {
+      label: "Episode Dashboard"
+      url: "/dashboards-next/457?Episode%20ID={{ appearances.epid._value }}"
+      icon_url: "https://looker.com/favicon.ico"
+    }
+    link: {
+      label: "Host Dashboard"
+      url: "/dashboards/437?Actor%20Name={{ hosts.aid._value }}"
+      icon_url: "https://looker.com/favicon.ico"
+    }
   }
 
   measure: median_score {
@@ -74,11 +104,41 @@ view: episode_ratings {
     type: average
     sql: ${female_score} ;;
     value_format: "0.00"
+    drill_fields: [episodes.airdate, hosts.aid, episode_ratings.score, episode_ratings.female_score, episode_ratings.male_score]
+
+  }
+
+  measure: female_season {
+    label: "Female Average with Season Drills"
+    type: average
+    sql: ${female_score} ;;
+    value_format: "0.00"
+    drill_fields: [episodes.airdate, hosts.aid, episode_ratings.score, episode_ratings.female_score, episode_ratings.male_score]
+    link: {
+      label: "Season Dashboard"
+      url: "/dashboards/454?Season={{ episode_ratings.sid._value }}"
+      icon_url: "https://looker.com/favicon.ico"
+    }
   }
 
   measure: male_average {
     type: average
     sql: ${male_score} ;;
     value_format: "0.00"
+    drill_fields: [episodes.airdate, hosts.aid, episode_ratings.score, episode_ratings.female_score, episode_ratings.male_score]
+
+  }
+
+  measure: male_season {
+    label: "Male Average with Season Drills"
+    type: average
+    sql: ${male_score} ;;
+    value_format: "0.00"
+    drill_fields: [episodes.airdate, hosts.aid, episode_ratings.score, episode_ratings.female_score, episode_ratings.male_score]
+    link: {
+      label: "Season Dashboard"
+      url: "/dashboards/454?Season={{ episode_ratings.sid._value }}"
+      icon_url: "https://looker.com/favicon.ico"
+    }
   }
 }
