@@ -27,7 +27,7 @@ view: derived_casts {
     primary_key: yes
     link: {
       label: "Cast Dashboard"
-      url: "/dashboards/440?Cast%20Member={{ value }}"
+      url: "/dashboards/440?Cast%20Member={{ value }}&Season={{ seasons.sid._value }}"
       icon_url: "https://looker.com/favicon.ico"
     }
     link: {

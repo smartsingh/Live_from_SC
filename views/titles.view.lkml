@@ -40,6 +40,17 @@ view: titles {
     sql: ${TABLE}.sid ;;
   }
 
+  dimension: later_season {
+    type: yesno
+    sql: ${sid} > 40 ;;
+  }
+
+  measure: count_later {
+    type: count_distinct
+    sql: ${sid} ;;
+    filters: [later_season: "Yes"]
+  }
+
   dimension: skid {
     type: number
     value_format_name: id
@@ -55,5 +66,15 @@ view: titles {
   measure: count {
     type: count
     drill_fields: [name]
+  }
+
+  measure: is_sketch {
+    type: yesno
+    sql: ${skid} IS NOT NULL ;;
+  }
+
+  measure: sketch_count {
+    type: number
+    sql: CASE WHEN ${is_sketch} THEN ${count} ELSE NULL END;;
   }
 }

@@ -109,8 +109,20 @@ explore: characters {  hidden: yes}
 explore: episode_ratings {  hidden: yes}
 
 explore: episodes {
+  conditionally_filter: {
+    filters: {
+      field: sid
+      value: "8"
+    }
+  }
   hidden: yes
   fields: [ALL_FIELDS*, -episodes.actor_episodes]
+
+  join: hosts {
+    sql_on: ${hosts.epid} = ${episodes.epid} ;;
+    type: inner
+    relationship: one_to_one
+  }
 
   join: appearances {
     type: inner
@@ -215,7 +227,27 @@ explore: seasons {
 
   }
 
-explore: sketches {  hidden: yes}
+explore: sketches {  hidden: yes
+
+  join: titles {
+    type: inner
+    relationship: one_to_many
+    sql_on: ${sketches.skid} = ${titles.skid} ;;
+  }
+
+  join: episodes {
+    type: inner
+    sql_on: ${episodes.epid} = ${titles.epid} ;;
+    relationship: many_to_many
+  }
+
+  join: appearances {
+    type: inner
+    sql_on: ${appearances.epid}=${episodes.epid} ;;
+    relationship: many_to_many
+  }
+
+  }
 
 explore: tenure {  hidden: yes}
 

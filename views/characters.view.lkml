@@ -1,6 +1,33 @@
 view: characters {
   sql_table_name: snl_db.characters ;;
 
+  parameter: dynamic_requisition_dimension_selector {
+    type: unquoted
+    view_label: "Dashboard Filter"
+    label: "Selector Headcount by ..."
+    default_value: "requisition_owner"
+    allowed_value: {
+      label: "Posting"
+      value: "posting"
+    }
+    allowed_value: {
+      label: "Requisition owner"
+      value: "requisition_owner"
+    }
+    allowed_value: {
+      label: "Team"
+      value: "team"
+    }
+    allowed_value: {
+      label: "Department"
+      value: "department"
+    }
+    allowed_value: {
+      label: "Requisition location"
+      value: "requisition_location"
+    }
+  }
+
   dimension: aid {
     type: string
     sql: ${TABLE}.aid ;;

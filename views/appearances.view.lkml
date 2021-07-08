@@ -8,6 +8,11 @@ view: appearances {
     primary_key: yes
   }
 
+  dimension: attribute_test {
+    type: string
+    sql:{% if _user_attributes['state'] == blank %} CA {% else %} {{ _user_attributes['state']}} {% endif %} ;;
+  }
+
   dimension: aid {
     type: string
     sql: ${TABLE}.aid ;;
@@ -16,6 +21,10 @@ view: appearances {
   dimension: capacity {
     type: string
     sql: ${TABLE}.capacity ;;
+  }
+
+  dimension: test {
+    sql: test ;;
   }
 
   dimension: charid {

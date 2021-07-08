@@ -16,6 +16,12 @@ view: hosts {
       url: "https://www.imdb.com/find?q={{value}}"
       icon_url: "https://ia.media-imdb.com/images/M/MV5BMTczNjM0NDY0Ml5BMl5BcG5nXkFtZTgwMTk1MzQ2OTE@._V1_.png"
     }
+    link: {
+      label: "Host Dashboard"
+      url: "/dashboards/437?Actor%20Name={{ value }}"
+      icon_url: "https://looker.com/favicon.ico"
+    }
+    suggest_persist_for: "1 second"
   }
 
   dimension: epid {
@@ -70,5 +76,10 @@ view: hosts {
   measure: count {
     type: count
     drill_fields: [episodes.airdate, aid, episode_ratings.score, episode_ratings.female_score, episode_ratings.male_score]
+    html: {% if value >= 50 %}
+    <p style="color: red;">{{ rendered_value }}</p>
+    {% else %}
+    <p style="color: black;">{{rendered_value}}</p>
+    {% endif %};;
   }
 }

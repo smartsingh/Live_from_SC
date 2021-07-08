@@ -36,6 +36,9 @@ view: episode_ratings {
   dimension: male_votes {
     type: number
     sql: ${TABLE}.Counts_Males ;;
+    # html: {% if value > female_votes._value %} <p style="font-size:50px;font-family:monotype;">{{value}}</p>
+    # {% else %} {{value}}}}
+    # {% endif %};;
   }
 
   dimension: epno {
@@ -105,7 +108,7 @@ view: episode_ratings {
     sql: ${female_score} ;;
     value_format: "0.00"
     drill_fields: [episodes.airdate, hosts.aid, episode_ratings.score, episode_ratings.female_score, episode_ratings.male_score]
-
+    html: <div style="visibility: hidden; height: 100px;"> {{value}}</div> ;;
   }
 
   measure: female_season {
