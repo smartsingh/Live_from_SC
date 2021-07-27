@@ -18,15 +18,15 @@ view: casts {
     sql: ${TABLE}.featured ;;
   }
 
-#   dimension: first_epid {
-#     type: date
-#     sql: MIN(${episodes.aired}) ;;
-#   }
-#
-#   dimension: last_epid {
-#     type: date
-#     sql: MAX(${episodes.aired}) ;;
-#   }
+  dimension: first_epid {
+    type: date
+    sql: MIN(${episodes.aired}) ;;
+  }
+
+  dimension: last_epid {
+    type: date
+    sql: MAX(${episodes.aired}) ;;
+  }
 
   dimension: n_episodes {
     type: number
