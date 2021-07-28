@@ -108,7 +108,6 @@ view: episode_ratings {
     sql: ${female_score} ;;
     value_format: "0.00"
     drill_fields: [episodes.airdate, hosts.aid, episode_ratings.score, episode_ratings.female_score, episode_ratings.male_score]
-    html: <div style="visibility: hidden; height: 100px;"> {{value}}</div> ;;
   }
 
   measure: female_season {
