@@ -20,12 +20,12 @@ view: casts {
 
   dimension: first_epid {
     type: date
-    sql: MIN(${episodes.aired_date}) ;;
+    sql: MIN(${episodes.aired_raw}) ;;
   }
 
   dimension: last_epid {
     type: date
-    sql: MAX(${episodes.aired_date}) ;;
+    sql: MAX(${episodes.aired_raw}) ;;
   }
 
   dimension: n_episodes {

@@ -9,7 +9,8 @@ view: episodes {
       month,
       quarter,
       month_num,
-      year
+      year,
+      raw
     ]
     sql: PARSE_DATE('%Y%m%d', CAST(${epid} AS STRING)) ;;
   }
