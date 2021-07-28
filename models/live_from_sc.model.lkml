@@ -145,6 +145,12 @@ explore: derived_casts {
     relationship: one_to_many
   }
 
+  join: seasons {
+    type: inner
+    relationship: many_to_one
+    sql_on: ${appearances.sid} = ${seasons.sid} ;;
+  }
+
   join: episodes {
     type: inner
     sql_on: ${episodes.epid} = ${appearances.epid} ;;
@@ -177,6 +183,12 @@ explore: hosts {
     type: inner
     sql_on: ${appearances.epid} = ${episodes.epid} ;;
     relationship: many_to_one
+  }
+
+  join: seasons {
+    type: inner
+    relationship: many_to_one
+    sql_on: ${appearances.sid} = ${seasons.sid} ;;
   }
 
   join: episode_ratings {
